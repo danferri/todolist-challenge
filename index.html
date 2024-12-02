@@ -17,8 +17,33 @@
             <form  class="add-user-form" action="">
                 <input type="text" id="name" placeholder="Nome do usuário" required>
                 <input type="text" id="url-image" placeholder="URL da imagem do usuário" required>
-                <button type="submit" class="btn btn-add">Adicionar Usuário</button>
+                <button type="submit" class="btn btn-add">+ Adicionar Usuário</button>
             </form>               
+        </section>
+        <section class="user-list">
+            <!-- <h2>Usuário</h2> -->
+            <div class="user-card" >
+                <div class="user-info">
+
+                </div>
+                <div class="user-actions">
+                    <button class="btn btn-edit">✎</button>
+                    <button class="btn btn-delete">🗑</button>
+                </div>
+                <Ul class="task-list">
+                    <li class="task-item">
+                        <input type="checkbox" id="task01">
+                        <label for="task01">Estudar Git/GituHub</label>
+                        <button class="btn btn-edit">✎</button>
+                        <button class="btn btn-delete">🗑</button>    
+                    </li>
+                </Ul>
+
+                <form class="task-form" action="">
+                    <input type="text" id="new-task" placeholder="Novo afazer" required>
+                    <button type="submit" class="btn btn-add">+ Adicionar Tarefa</button>
+                </form>
+            </div>
         </section>
     </div>    
     <script src="script.js"></script>

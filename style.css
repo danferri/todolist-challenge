@@ -58,9 +58,58 @@ body {
     border-radius: 4px;
 }
 
+.user-card {
+    background-color: #e6e6fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    font-size: 16px;
+}
+
+.user-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+  
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+  
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+  
+.task-item label {
+    flex: 1;
+}
+
+/* Botões */
 .btn {
     padding: 5px 12px;
-    border: none;
+    border: #6A0DAD;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -68,4 +117,53 @@ body {
 .btn-add {
     background-color: #6A0DAD;
     color: white;
+    border: 1px solid transparent;
+}
+
+.btn-add:hover {
+    background-color: #e6e6fa;
+    color: #6A0DAD;
+    border-color: #6A0DAD;
+}
+
+.btn-edit {
+    background-color: #6A0DAD;
+    color: #ccc;    
+    border: 1px solid transparent;
+}
+
+.btn-edit:hover {
+    background-color: #e6e6fa;
+    color: #6A0DAD;
+    border-color: #6A0DAD;
+}
+
+.btn-delete {
+    background-color: #6A0DAD;
+    color: #ccc;
+    border: 1px solid transparent;
+}
+
+.btn-delete:hover {
+    background-color: #e6e6fa;
+    color: #6A0DAD;
+    border-color: #6A0DAD;
+}
+
+.user-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.task-form {
+    display: flex;
+    gap: 10px;
+}
+  
+.task-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
