@@ -24,13 +24,15 @@ function addUsers() {
     userDiv.dataset.id = user.id;
 
     userDiv.innerHTML = `
-      <div class="user-info">
-        <img src="${user.image}" alt="user-image" class="user-avatar">
-        <span class="user-name">${user.name}</span>
-      </div>
-      <div class="user-actions">
-        <button class="btn btn-edit">✎</button>
-        <button class="btn btn-delete">🗑</button>
+      <div class="user-header">
+        <div class="user-info">
+          <img src="${user.image}" alt="user-image" class="user-avatar">
+          <span class="user-name">${user.name}</span>
+        </div>
+        <div class="user-actions">
+          <button class="btn btn-edit">✎</button>
+          <button class="btn btn-delete">🗑</button>
+        </div>
       </div>
       <ul class="task-list"></ul>
       <form class="task-form">
@@ -40,8 +42,10 @@ function addUsers() {
     `;
 
     const editButton = userDiv.querySelector(".btn-edit");
+    const deleteButton = userDiv.querySelector(".btn-delete");
         
     editButton.addEventListener("click", () => editUser(user.id));
+    deleteButton.addEventListener("click", () => deleteUser(user.id));
     
     userList.appendChild(userDiv);
   });
@@ -56,6 +60,14 @@ function editUser(userId) {
     imageUrl.value = userEdit.image;
     nameInput.dataset.userId = userEdit.id;
   }
+}
+
+function deleteUser(userId) {
+  let users = loadUsers();
+
+  users = users.filter((user) => user.id !== userId);
+  saveUsers(users);
+  addUsers();
 }
 
 
