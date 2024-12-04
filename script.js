@@ -1,7 +1,9 @@
-const form = document.querySelector(".add-user-form");
+const formUser = document.querySelector(".add-user-form");
+//const formTask = document.querySelector(".task-form");
 const nameInput = document.getElementById("name");
 const imageUrl = document.getElementById("url-image");
-
+//const taskInput = document.querySelector("input");
+ 
 let editMode = null;
 
 function saveUsers(users) {
@@ -36,7 +38,7 @@ function addUsers() {
       </div>
       <ul class="task-list"></ul>
       <form class="task-form">
-        <input type="text" placeholder="Novo afazer" required>
+        <input type="text" id="task" placeholder="Novo afazer" required>
         <button type="submit" class="btn btn-add">+ Adicionar Tarefa</button>
       </form>      
     `;
@@ -71,7 +73,7 @@ function deleteUser(userId) {
 }
 
 
-form.addEventListener("submit", (event) => {
+formUser.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const userName = nameInput.value.trim();
@@ -84,7 +86,7 @@ form.addEventListener("submit", (event) => {
 
     if(userIndex !== -1) {
       users[userIndex].name = userName;
-      users[userIndex].image =userImage;
+      users[userIndex].image = userImage;
 
       delete nameInput.dataset.userId;
     } else {
@@ -107,6 +109,34 @@ form.addEventListener("submit", (event) => {
   }    
 });
 
+document.addEventListener("submit", (event) => {
+  if(event.target.classList.contains("task-form")) {
+  event.preventDefault();  
+  
+  const taskInput = event.target.querySelector("input#task");
+  const taskText = taskInput.value.trim();
+  const userId = parseInt(event.target.closest(".user-card").dataset.id, 10);
+
+    if(taskText) {
+      const users = loadUsers();
+      const userIndex = users.findIndex((user) => user.id === userId);
+      
+      if (userIndex !== -1) {
+        const newTask = {
+          tarefa: taskText,
+          completed: false
+        };
+        users[userIndex].afazeres.push(newTask);        
+                
+        saveUsers(users);        
+
+        taskInput.value = "";
+      } 
+
+    }  
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   addUsers();
-})
+});
