@@ -72,7 +72,6 @@ function deleteUser(userId) {
   addUsers();
 }
 
-
 formUser.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -115,10 +114,9 @@ function addTasks() {
   users.forEach((user) => {
     const userCard = document.querySelector(`.user-card[data-id="${user.id}"]`);
     const taskList = userCard.querySelector(".task-list");
-    taskList.innerHTML = ""; // Limpa a lista antes de adicionar as tarefas
+    taskList.innerHTML = "";
 
     user.afazeres.forEach((task, index) => {
-      // Criar a tarefa como uma li com o checkbox e eventos
       taskList.innerHTML += `
         <li class="task-item ${task.completed ? "completed" : ""}">
           <input type="checkbox" id="task-${user.id}-${index}" ${task.completed ? "checked" : ""}>
@@ -128,16 +126,13 @@ function addTasks() {
         </li>
       `;
     });
-
-    // Adiciona eventos para todos os checkboxes após renderizar
+    
     taskList.querySelectorAll("input[type='checkbox']").forEach((checkbox, index) => {
-      checkbox.addEventListener("change", () => {
-        // Atualiza o localStorage
+      checkbox.addEventListener("change", () => {        
         const isChecked = checkbox.checked;
-        users[user.id - 1].afazeres[index].completed = isChecked; // Atualiza completed no localStorage
+        users[user.id - 1].afazeres[index].completed = isChecked;
         saveUsers(users);
-
-        // Atualiza visualmente
+        
         const taskItem = checkbox.closest(".task-item");
         taskItem.classList.toggle("completed", isChecked);
       });

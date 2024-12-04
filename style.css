@@ -174,3 +174,16 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+.task-item.completed label {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task-item {
+    background-color: #f3f3fd;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    padding: 10px;
+    margin-bottom: 10px;
+}
