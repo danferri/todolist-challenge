@@ -50,7 +50,10 @@ function addUsers() {
     deleteButton.addEventListener("click", () => deleteUser(user.id));
     
     userList.appendChild(userDiv);
+
+    
   });
+  addTasks();
 }
 
 function editUser(userId) {
@@ -137,7 +140,25 @@ function addTasks() {
         taskItem.classList.toggle("completed", isChecked);
       });
     });
+
+    taskList.querySelectorAll(".btn-delete").forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        deleteTask(user.id, index);
+      });
+    });
+
   });
+}
+
+function deleteTask(userId, taskIndex) {
+  let users = loadUsers();
+  const userIndex = users.findIndex((user) => user.id === userId);
+
+  if (userIndex !== -1) {
+    users[userIndex].afazeres.splice(taskIndex, 1);
+    saveUsers(users);
+    addTasks();
+  }
 }
 
 document.addEventListener("submit", (event) => {
