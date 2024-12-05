@@ -4,7 +4,7 @@ const nameInput = document.getElementById("name");
 const imageUrl = document.getElementById("url-image");
 //const taskInput = document.querySelector("input");
  
-let editMode = null;
+//let editMode = null;
 
 function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
@@ -49,9 +49,7 @@ function addUsers() {
     editButton.addEventListener("click", () => editUser(user.id));
     deleteButton.addEventListener("click", () => deleteUser(user.id));
     
-    userList.appendChild(userDiv);
-
-    
+    userList.appendChild(userDiv);    
   });
   addTasks();
 }
@@ -147,6 +145,11 @@ function addTasks() {
       });
     });
 
+    taskList.querySelectorAll(".btn-edit").forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        editTask(user.id, index);
+      });
+    });
   });
 }
 
@@ -161,32 +164,48 @@ function deleteTask(userId, taskIndex) {
   }
 }
 
+function editTask(userId, taskIndex) {
+  const users = loadUsers();
+  const userIndex = users.findIndex((user) => user.id === userId);
+
+  if (userIndex !== -1) {
+    const task = users[userIndex].afazeres[taskIndex];
+    const taskInput = document.querySelector(`.user-card[data-id="${userId}"] .task-form input#task`);
+
+    taskInput.value = task.tarefa;
+    taskInput.dataset.taskIndex = taskIndex;
+  }
+}
+
 document.addEventListener("submit", (event) => {
   if(event.target.classList.contains("task-form")) {
   event.preventDefault();  
   
-  const taskInput = event.target.querySelector("input#task");
-  const taskText = taskInput.value.trim();
-  const userId = parseInt(event.target.closest(".user-card").dataset.id, 10);
+    const taskInput = event.target.querySelector("input#task");
+    const taskText = taskInput.value.trim();
+    const userId = parseInt(event.target.closest(".user-card").dataset.id, 10);
+    const taskIndex = taskInput.dataset.taskIndex;
 
     if(taskText) {
       const users = loadUsers();
       const userIndex = users.findIndex((user) => user.id === userId);
       
-      if (userIndex !== -1) {
-        const newTask = {
+      if(userIndex !== -1) {
+        if(taskIndex!== undefined) {
+          users[userIndex].afazeres[taskIndex].tarefa = taskText;
+          delete taskInput.dataset.taskIndex;
+        } else {
+          const newTask = {
           tarefa: taskText,
           completed: false
-        };
-        users[userIndex].afazeres.push(newTask);        
-                
+          };
+          users[userIndex].afazeres.push(newTask);
+        }
+                      
         saveUsers(users);        
-
-        taskInput.value = "";
-
         addTasks();
-      } 
-
+        taskInput.value = "";        
+      }
     }  
   }
 });
