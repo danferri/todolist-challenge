@@ -1,10 +1,6 @@
 const formUser = document.querySelector(".add-user-form");
-//const formTask = document.querySelector(".task-form");
 const nameInput = document.getElementById("name");
 const imageUrl = document.getElementById("url-image");
-//const taskInput = document.querySelector("input");
- 
-//let editMode = null;
 
 function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
@@ -79,8 +75,7 @@ formUser.addEventListener("submit", (event) => {
   const userName = nameInput.value.trim();
   const userImage = imageUrl.value.trim();
   let users = loadUsers();
-    
-
+  
   if(userName && userImage) {    
     const userIndex = users.findIndex((user) => user.id === parseInt(nameInput.dataset.userId));
 
