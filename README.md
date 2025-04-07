@@ -17,6 +17,9 @@ Ao acessar o website, usando uma extensão de servidor local na IDE, como a "Liv
 Ao descrever a tarefa no campo apropriado "Nova tarefa" e clicar no botão "Adicionar tarefa", essa tarefa será exibida acima do formulário de adição, junto com um checkbox. A função do checkbox é designar a tarefa como concluída; ao marcá-lo, a tarefa será riscada, indicando que foi feita.
 
 Tanto no cadastro de usuário quanto no cadastro de tarefas, também aparecerão botões de edição e exclusão. O botão de edição, ao ser clicado, habilitará a opção de editar o usuário ou a tarefa nos respectivos formulários. Para concluir a edição, basta clicar no botão de cadastro do respectivo formulário. Já o botão de exclusão, ao ser clicado, simplesmente apagará o usuário ou a tarefa.
+
+Link da aplicação já hospedada no GitHub Pages: https://danferri.github.io/todolist-challenge/
+
 <br>
 <br>
 
@@ -45,3 +48,7 @@ When accessing the website, using a local server extension in the IDE, such as "
 By describing the task in the appropriate field "Novo afazer" and clicking the "Adicionar tarefa" button, the task will be displayed above the task addition form, along with a checkbox. The checkbox is used to mark the task as completed; when checked, the task will be crossed out, indicating it has been done.
 
 Both in the user registration and task registration forms, edit and delete buttons will also appear. The edit button, when clicked, will enable the option to edit the user or task in their respective forms. To complete the editing process, simply click the registration button in the respective form. The delete button, when clicked, will simply delete the user or the task.
+
+Link to de application hosted on GitHub Pages: https://danferri.github.io/todolist-challenge/
+
+<br>
